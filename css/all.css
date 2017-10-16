@@ -568,7 +568,7 @@ transition: all 0.5s ease-in-out;
 }
 .footer-content .social li.email a{background: url(../images/icon_email.png) no-repeat 50% 50% ;}
 .footer-content .social li.facebook a{background: url(../images/icon_fb.png) no-repeat 50% 50%;}
-.footer-content .social li.google a{background: url(../images/icon_gl.png) no-repeat 50% 50% ;}
+.footer-content .social li.google a{background: url(../images/spotify-300x300.png) no-repeat 50% 50% ;}
 .footer-content .social li.twitter a{background: url(../images/icon_tw.png) no-repeat 50% 50% ;}
 .footer-content .social li.github a{background: url(../images/GitHub-Mark-Light-64px.png) no-repeat 50% 50%;}
 .footer-content p{
@@ -658,7 +658,7 @@ transition: all 0.5s ease-in-out;
 		background-size:20px 38px;
 	}
 	.footer-content .social li.google a{
-		background-image: url(../images/icon_gl@x2.png);
+		background-image: url(../images/spotify-300x300.png);
 		background-size:42px 38px;
 	}
 	.footer-content .social li.twitter a{

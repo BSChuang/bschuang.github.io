@@ -327,14 +327,18 @@ h2.slogan{
 	font-size: 18px;
 	padding: 0 0 0 20px;
 }
-.progress li span.photoshop{width: 100%;}
-.progress li span.illustrator{width: 70%;}
-.progress li span.indesign{width: 40%;}
-.progress li span.flash{width: 80%;}
-.progress li span.html{width: 75%;}
-.progress li span.wordpress{width: 85%;}
-.progress li span.jquery{width: 70%;}
-.progress li span.seo{width: 40%;}
+.progress li span.csharp{width: 55%;}
+.progress li span.python{width: 75%;}
+.progress li span.html{width: 55%;}
+.progress li span.css{width: 45%;}
+.progress li span.javascript{width: 70%;}
+.progress li span.jquery{width: 10%;}
+
+.progress li span.archery{width: 80%;}
+.progress li span.climbing{width: 50%;}
+.progress li span.gymnastics{width: 15%;}
+.progress li span.snowboarding{width: 75%;}
+.progress li span.tennis{width: 60%;}
 .plagin_list{
 	width: 100%;
 	overflow: hidden;

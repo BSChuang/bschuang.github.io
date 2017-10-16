@@ -216,7 +216,7 @@ h2.slogan{
 	margin: 0 auto;
 	padding: 93px 0 76px;
 	position:relative;
-	background: url(../images/icon_header.png) no-repeat 50% 0;
+	/*background: url(../images/icon_header.png) no-repeat 50% 0;*/
 }
 #main h2{
 	display: block;
@@ -568,7 +568,7 @@ transition: all 0.5s ease-in-out;
 }
 .footer-content .social li.email a{background: url(../images/icon_email.png) no-repeat 50% 50% ;}
 .footer-content .social li.facebook a{background: url(../images/icon_fb.png) no-repeat 50% 50%;}
-.footer-content .social li.google a{background: url(../images/spotify-300x300.png) no-repeat 50% 50% ;}
+.footer-content .social li.spotify a{background: url(../images/spotify-300x300.png) no-repeat 50% 50%/85px 85px  ;}
 .footer-content .social li.twitter a{background: url(../images/icon_tw.png) no-repeat 50% 50% ;}
 .footer-content .social li.github a{background: url(../images/GitHub-Mark-Light-64px.png) no-repeat 50% 50%;}
 .footer-content p{
@@ -626,7 +626,7 @@ transition: all 0.5s ease-in-out;
 
 @media (-webkit-min-device-pixel-ratio:2) ,(min--moz-device-pixel-ratio:2),(-o-min-device-pixel-ratio:2/1),(min-device-pixel-ratio:2),(min-resolution:192dpi),(min-resolution:2dppx){
 	#main {
-		background-image: url(../images/icon_header@x2.png);
+		/*background-image: url(../images/icon_header@x2.png);*/
 		background-size:114px 46px;
 	}
 	.menu_trigger{
@@ -657,9 +657,11 @@ transition: all 0.5s ease-in-out;
 		background-image: url(../images/icon_fb@x2.png);
 		background-size:20px 38px;
 	}
-	.footer-content .social li.google a{
+	.footer-content .social li.spotify a{
 		background-image: url(../images/spotify-300x300.png);
-		background-size:42px 38px;
+		background-size:38px 38px;
+		width:1px;
+		height: 1px;
 	}
 	.footer-content .social li.twitter a{
 		background-image: url(../images/icon_tw@x2.png);

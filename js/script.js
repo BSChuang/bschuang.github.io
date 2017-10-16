@@ -1,5 +1,5 @@
 function makeOutline() {
-    var size = 100;
+    var size = 25;
     var pixels = "";
     for (var i=0; i < size; i++) {
         pixels += "<div class='row'>"
@@ -14,4 +14,13 @@ function makeOutline() {
 
 function setPixelColor(pixel) {
     pixel.style.backgroundColor = "black";
+}
+
+var penColor = 'black';
+function setPenColor(pen) {
+    penColor = pen;
+}
+
+function setPixelColor(pixel) {
+    pixel.style.backgroundColor = penColor;
 }

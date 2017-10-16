@@ -4,7 +4,7 @@ function makeOutline() {
     for (var i=0; i < size; i++) {
         pixels += "<div class='row'>"
         for (var j=0; j < size; j++) {
-            pixels += "<div class='pixel' onclick='setPixelColor(this)'></div>"
+            pixels += "<div class='pixel' onmouseenter='enterHoverPixelColor(this)' onmouseleave='exitHoverPixelColor(this)' onclick='setPixelColor(this)'></div>"
         }
         pixels += "</div>"
     }
@@ -12,15 +12,22 @@ function makeOutline() {
     document.getElementById('art').innerHTML = pixels;
 }
 
-function setPixelColor(pixel) {
-    pixel.style.backgroundColor = "black";
-}
-
 var penColor = 'black';
 function setPenColor(pen) {
     penColor = pen;
 }
 
+var prevPixelColor = '';
+function enterHoverPixelColor(pixel) {
+    prevPixelColor = pixel.style.backgroundColor;
+    pixel.style.backgroundColor = penColor;
+}
+
+function exitHoverPixelColor(pixel) {
+    pixel.style.backgroundColor = prevPixelColor;
+}
+
 function setPixelColor(pixel) {
     pixel.style.backgroundColor = penColor;
+    prevPixelColor = pixel.style.backgroundColor
 }

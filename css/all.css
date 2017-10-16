@@ -263,7 +263,7 @@ h2.slogan{
 	font-family: 'novecentosanswide';
 	font-weight:bold;
 	color: #fff;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 16px;
 	display: block;
 	text-align: center;
@@ -647,7 +647,7 @@ transition: all 0.5s ease-in-out;
 	}
 	.box_timeline ul li .date{
 		background-image: url(../images/bg_timeline_c@x2.png);
-		background-size:50px 86px;
+		background-size:100px 100px;
 	}
 	.footer-content .social li.email a{
 		background-image: url(../images/icon_email@x2.png);
@@ -660,7 +660,7 @@ transition: all 0.5s ease-in-out;
 	.footer-content .social li.spotify a{
 		background-image: url(../images/spotify-300x300.png);
 		background-size:38px 38px;
-		width:1px;
+		width: 1px;
 		height: 1px;
 	}
 	.footer-content .social li.twitter a{

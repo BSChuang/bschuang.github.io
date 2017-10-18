@@ -9,7 +9,7 @@ function makeOutline() {
         pixels += "</div>"
     }
 
-    document.getElementById('art').innerHTML = pixels;
+    document.getElementById('art').innerHTML += pixels;
     document.getElementById('art').style.backgroundColor = "black";
     document.getElementById('art').style.tableLayout = "fixed";
 }

@@ -12,6 +12,7 @@ function makeOutline() {
     document.getElementById('art').innerHTML += pixels;
     document.getElementById('art').style.backgroundColor = "black";
     document.getElementById('art').style.tableLayout = "fixed";
+    document.getElementById('art').addEventListener("wheel", zoom);
 }
 
 function borderToggle() {
@@ -39,4 +40,15 @@ function exitHoverPixelColor(pixel) {
 function setPixelColor(pixel) {
     pixel.style.backgroundColor = penColor;
     prevPixelColor = pixel.style.backgroundColor
+}
+
+
+function zoom() {
+    this.style.backgroundColor="blue";
+    console.log(document.getElementsByClassName("pixel"))
+    var pixels = document.getElementsByClassName("pixel");
+    for (var i=0; i < pixels.length; i++){
+        pixels[i].style.width="30px";
+        pixels[i].style.height="30px";
+    }
 }

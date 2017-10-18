@@ -141,7 +141,7 @@ a:hover{text-decoration:underline;}
 #header {
 	max-width: 1170px;
 	margin: 0 auto;
-	padding: 69px 0 50px;
+	padding: 69px 0 10px;
 	position:relative;
 }
 .menu_trigger{
@@ -263,11 +263,11 @@ h2.slogan{
 	font-family: 'novecentosanswide';
 	font-weight:bold;
 	color: #fff;
-	font-size: 12px;
-	line-height: 16px;
+	font-size: 15px;
+	line-height: 0px;
 	display: block;
 	text-align: center;
-	padding: 15px 0 0 0;
+	padding: 17px 0 0 0;
 }
 .box_timeline h3{
 	font-family: 'novecento_sans_widemedium';
@@ -364,7 +364,7 @@ h2.slogan{
 	height: 100%;
 	position: relative;
 }
-.plagin_list li.li_1 a{background: url(../images/icon_ps.png) no-repeat 50% 50% ;}
+.plagin_list li.li_1 a{background: url(../images/GitHub-Mark-Light-64px.png) no-repeat 50% 50% ;}
 .plagin_list li.li_2 a{background: url(../images/icon_ai.png) no-repeat 50% 50% ;}
 .plagin_list li.li_3 a{background: url(../images/icon_ld.png) no-repeat 50% 50% ;}
 .plagin_list li.li_4 a{background: url(../images/icon_fl.png) no-repeat 50% 50% ;}

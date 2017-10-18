@@ -10,6 +10,15 @@ function makeOutline() {
     }
 
     document.getElementById('art').innerHTML = pixels;
+    document.getElementById('art').style.backgroundColor = "black";
+    document.getElementById('art').style.tableLayout = "fixed";
+}
+
+function borderToggle() {
+    if (document.getElementById('art').style.backgroundColor == "black")
+        document.getElementById('art').style.backgroundColor = "rgb(122, 122, 122)";
+    else
+    document.getElementById('art').style.backgroundColor = "black";
 }
 
 var penColor = 'black';

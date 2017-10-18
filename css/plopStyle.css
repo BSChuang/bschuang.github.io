@@ -1,8 +1,23 @@
+body {
+  background-color: rgb(46, 46, 46)
+}
+
 #art {
   display: table;
+  margin: auto;
+  width: 50%;
   border-spacing: 1px;
   background-color: black;
-  border: 5px solid black;
+}
+
+#palette {
+  margin: auto;
+  position: fixed;
+
+  width: 50%;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 
 .row {
@@ -11,13 +26,17 @@
 
 .pixel {
   display: table-cell;
-  background-color: white;
+  background-color: rgb(122, 122, 122);
   width: 40px;
+  min-width: 40px;
   height: 40px;
+  min-height: 40px;
 }
 
 .pen {
   display: inline-block;
+  margin: auto;
+  width: 50%;
   width: 40px;
   height: 40px;
   border: 2px solid black;

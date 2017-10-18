@@ -13,7 +13,7 @@ body {
 #palette {
   margin: auto;
   position: fixed;
-
+  background-color: lightgreen;
   width: 50%;
   left: 0;
   top: 0;

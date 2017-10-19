@@ -5,8 +5,10 @@
         <script src="js/snakeScript.js"></script>
     </head>
     <body>
-        <button id='btn'>START</button>
-        <canvas id="canvas" width="450" height="450"></canvas>
-        <script type="text/javascript">CanvasSetup();</script>
+        <div id="art">
+                <script type="text/javascript">makeOutline();</script>
+                <script type="text/javascript">makeSnake();</script>
+                <script type="text/javascript">setInterval(update, 100);</script>
+        </div>
     </body>
 </html>

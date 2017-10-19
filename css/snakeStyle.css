@@ -1,11 +1,25 @@
 body {
-    background-color: #375;
-  }
+  background-color: #375;
+}
   
-  #canvas {
-    display: block;
-    margin: 5px auto;
-    border: 10px solid #657;
-    
-    
-  }
+#art {
+  display: table;
+  margin: auto;
+  border-spacing: 1px;
+  background-color: #999;
+  border-style: solid;
+  border-color: black;
+}
+
+.row {
+  display: table-row;
+}
+
+.pixel {
+  display: table-cell;
+  background-color: rgb(122, 122, 122);
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+}

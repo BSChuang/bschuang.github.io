@@ -10,8 +10,8 @@ var food = [];
 
 function makeOutline() {
     var pixels = "";
-    widthPixels = Math.floor(screen.height * 3/4 / 20);
-    lengthPixels = Math.floor(screen.width * 3.5/4 / 20);
+    widthPixels = Math.floor(window.innerHeight / 20);
+    lengthPixels = Math.floor(window.innerWidth / 20);
     for (var i=0; i < widthPixels; i++) {
         pixels += "<div class='row'>"
         for (var j=0; j < lengthPixels; j++) {

@@ -1,5 +1,6 @@
 body {
   background-color: #375;
+  overflow: hidden;
 }
   
 #art {
@@ -9,6 +10,7 @@ body {
   background-color: #999;
   border-style: solid;
   border-color: black;
+  overflow: hidden;
 }
 
 .row {
@@ -17,7 +19,7 @@ body {
 
 .pixel {
   display: table-cell;
-  background-color: rgb(122, 122, 122);
+  background-color: gray;
   width: 20px;
   min-width: 20px;
   height: 20px;

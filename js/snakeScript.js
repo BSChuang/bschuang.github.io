@@ -1,6 +1,6 @@
 var widthPixels = 0;
 var lengthPixels = 0;
-var stopInterval;
+var stopInterval = 0;
 var score = 0;
 
 var snakeSize = 4;
@@ -10,8 +10,8 @@ var food = [];
 
 function makeOutline() {
     var pixels = "";
-    widthPixels = Math.floor(window.innerHeight / 20);
-    lengthPixels = Math.floor(window.innerWidth / 20);
+    widthPixels = Math.floor(window.innerHeight * 0.85 / 20);
+    lengthPixels = Math.floor(window.innerWidth * 0.95 / 20);
     for (var i=0; i < widthPixels; i++) {
         pixels += "<div class='row'>"
         for (var j=0; j < lengthPixels; j++) {
@@ -38,8 +38,12 @@ function makeSnake() {
     makeOutline();
     dead = false;
     dir = "d"
-    document.getElementById("restart").innerHTML = ""
-    
+    if (stopInterval != 0){
+        clearInterval(stopInterval);
+        stopInterval = 0;
+    }
+
+
     snakeH[0] = 7;
     snakeH[1] = 2;
 
@@ -113,7 +117,6 @@ function Death(){
 
     if ((dir == "l" && snakeH[0] == 0) || (dir == "r" && snakeH[0] == lengthPixels - 1) || (dir == "u" && snakeH[1] == 0) || (dir == "d" && snakeH[1] == widthPixels - 1)){
         dead = true;
-        document.getElementById("restart").innerHTML = "<button type='button' onclick='makeSnake();'>Restart!</button>"
     }
 
     if (dead)

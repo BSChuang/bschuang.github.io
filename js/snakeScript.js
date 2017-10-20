@@ -1,7 +1,9 @@
 var widthPixels = 0;
 var lengthPixels = 0;
 var stopInterval = 0;
+var snakeColor = "#770b0b";
 var score = 0;
+var original = false;
 
 var snakeSize = 4;
 var dead = false;
@@ -34,9 +36,26 @@ function addZero (num){
         return num.toString();
 }
 
+function CheckSnakeColor(){
+    var hexLetters = ['a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F']
+    var color = document.getElementById("inputColor").value; 
+    if (color.length == 7 && color[0] == "#"){
+        var error = false;
+        for (var i = 1; i < color.length; i++){
+            if (isNaN(color[i]))
+                if (!hexLetters.includes(color[i]))
+                    error = true;
+        }
+        if (!error)
+            snakeColor = color;
+    }
+}
+
 function makeSnake() {
     makeOutline();
+    CheckSnakeColor();
     dead = false;
+    nextPress = "";
     dir = "d"
     if (stopInterval != 0){
         clearInterval(stopInterval);
@@ -52,11 +71,11 @@ function makeSnake() {
     snakeB.push([5, 2])
     snakeB.push([4, 2])
     snakeB.push([3, 2])
-    document.getElementById('0702').style.backgroundColor="red";
-    document.getElementById('0602').style.backgroundColor="red";
-    document.getElementById('0502').style.backgroundColor="red";
-    document.getElementById('0402').style.backgroundColor="red";
-    document.getElementById('0302').style.backgroundColor="red";
+    document.getElementById('0702').style.backgroundColor=snakeColor;
+    document.getElementById('0602').style.backgroundColor=snakeColor;
+    document.getElementById('0502').style.backgroundColor=snakeColor;
+    document.getElementById('0402').style.backgroundColor=snakeColor;
+    document.getElementById('0302').style.backgroundColor=snakeColor;
 
     makeFood();
 
@@ -65,16 +84,27 @@ function makeSnake() {
 
 function makeFood (){
     food = [Math.floor(Math.random() * lengthPixels), Math.floor(Math.random() * widthPixels)]
-    while (snakeB.includes(food) || snakeH.includes(food))
-        food = [Math.floor(Math.random() * lengthPixels), Math.floor(Math.random() * widthPixels)]
 
+    if (food[0] == snakeH[0] && food[1] == snakeH[1]){
+        makeFood();
+        return;
+    }
+
+    for (var i = 0; i < snakeB.length; i++){ // if food spawns on body
+        if (snakeB[i][0] == food[0]){
+            if (snakeB[i][1] == food[1]){
+                makeFood();
+                return;
+            }
+        }
+    }
     foodS = addZero(food[0]) + addZero(food[1])
     document.getElementById(foodS).style.backgroundColor="yellow";
 }
 
 
 function update(){
-    score = snakeB.length + 1
+    score = snakeB.length - 4
     document.getElementById("score").innerHTML = "Score: " + score
     snakeB.unshift([snakeH[0], snakeH[1]]); // Add to array
     if (dir == "r")
@@ -87,7 +117,7 @@ function update(){
         snakeH[1] += 1;
 
     var headPos = addZero(snakeH[0]) + addZero(snakeH[1]) // Sets the next head coord as red
-    document.getElementById(headPos).style.backgroundColor="red"
+    document.getElementById(headPos).style.backgroundColor=snakeColor
 
      
     if (!(snakeH[0] == food[0] && snakeH[1] == food[1])){ // Not Hit food

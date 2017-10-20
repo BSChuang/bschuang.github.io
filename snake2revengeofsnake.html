@@ -5,8 +5,13 @@
         <script src="js/snakeScript.js"></script>
     </head>
     <body>
-        <button type='button' onclick='makeSnake();'>Restart!</button>
-        <div id="score"></div>
+        <div class="center">
+            <input class="button" type="text" id="inputColor" style="width:75px;" value="Input hex!">
+            <button class="button" onclick='makeSnake();'>Restart</button>
+            <button class="button" onclick='makeSnake();'>Original</button>
+            <div id="score"></div>
+        </div>
+
         <div id="art"></div>
         <script type="text/javascript">makeSnake();</script>
         

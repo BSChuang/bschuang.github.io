@@ -1,14 +1,26 @@
 var widthPixels = 0;
 var lengthPixels = 0;
 var stopInterval = 0;
-var snakeColor = "#770b0b";
 var score = 0;
-var original = false;
+var original = true;
+var snakeColor = "#7f0c0c";
 
 var snakeSize = 4;
 var dead = false;
 var dir = "d";
 var food = [];
+
+function SwitchMode() {
+    if (original){
+        document.getElementById("mode").innerHTML = "Mode: Ultra Extreme Mega Snaek Too"
+        original = false;
+    }
+    else{
+        document.getElementById("mode").innerHTML = "Mode: Original"
+        original = true;
+    }
+
+}
 
 function makeOutline() {
     var pixels = "";
@@ -28,12 +40,24 @@ function makeOutline() {
 
 var snakeH = [0, 0];
 var snakeB = [];
+var snakeS = [];
+
+function ExitHover(x) {
+    x.style.backgroundColor = "rgb(81, 206, 85)";
+}
+function EnterHover(x) {
+    x.style.backgroundColor = "rgb(58, 146, 59)";
+}
 
 function addZero (num){
     if (num < 10)
         return "0" + num.toString();
     else
         return num.toString();
+}
+
+function coordS(x, y){
+    return addZero(x) + addZero(y)
 }
 
 function CheckSnakeColor(){
@@ -47,13 +71,14 @@ function CheckSnakeColor(){
                     error = true;
         }
         if (!error)
-            snakeColor = color;
+            snakeColor = color
     }
 }
 
 function makeSnake() {
     makeOutline();
     CheckSnakeColor();
+    
     dead = false;
     nextPress = "";
     dir = "d"
@@ -71,11 +96,28 @@ function makeSnake() {
     snakeB.push([5, 2])
     snakeB.push([4, 2])
     snakeB.push([3, 2])
-    document.getElementById('0702').style.backgroundColor=snakeColor;
-    document.getElementById('0602').style.backgroundColor=snakeColor;
-    document.getElementById('0502').style.backgroundColor=snakeColor;
-    document.getElementById('0402').style.backgroundColor=snakeColor;
-    document.getElementById('0302').style.backgroundColor=snakeColor;
+    snakeS.push('0602')
+    snakeS.push('0502')
+    snakeS.push('0402')
+    snakeS.push('0302')
+    
+    document.getElementById('0702').classList.add('snake');
+    document.getElementById('0702').classList.remove('pixel');
+    document.getElementById('0602').classList.add('snake');
+    document.getElementById('0602').classList.remove('pixel');
+    document.getElementById('0502').classList.add('snake');
+    document.getElementById('0502').classList.remove('pixel');
+    document.getElementById('0402').classList.add('snake');
+    document.getElementById('0402').classList.remove('pixel');
+    document.getElementById('0302').classList.add('snake');
+    document.getElementById('0302').classList.remove('pixel');
+
+    document.getElementById('0702').style.backgroundColor = snakeColor;
+    document.getElementById('0602').style.backgroundColor = snakeColor;
+    document.getElementById('0502').style.backgroundColor = snakeColor;
+    document.getElementById('0402').style.backgroundColor = snakeColor;
+    document.getElementById('0302').style.backgroundColor = snakeColor;
+    
 
     makeFood();
 
@@ -99,14 +141,21 @@ function makeFood (){
         }
     }
     foodS = addZero(food[0]) + addZero(food[1])
-    document.getElementById(foodS).style.backgroundColor="yellow";
+    document.getElementById(foodS).classList.add('food');
+    document.getElementById(foodS).classList.remove('pixel');
+    document.getElementById(foodS).style.backgroundColor = "yellow";
 }
 
 
 function update(){
     score = snakeB.length - 4
-    document.getElementById("score").innerHTML = "Score: " + score
+    if (original)
+        document.getElementById("score").innerHTML = " Score: " + score
+    else
+        document.getElementById("score").innerHTML = "Effect: " + effect + " | Score: " + score
     snakeB.unshift([snakeH[0], snakeH[1]]); // Add to array
+    snakeS.unshift(coordS(snakeH[0], snakeH[1])) // Add string coords
+    document.getElementById(coordS(snakeH[0], snakeH[1])).style.backgroundColor = snakeColor;
     if (dir == "r")
         snakeH[0] += 1;
     else if (dir == "l")
@@ -116,17 +165,26 @@ function update(){
     else if (dir == "d")
         snakeH[1] += 1;
 
-    var headPos = addZero(snakeH[0]) + addZero(snakeH[1]) // Sets the next head coord as red
-    document.getElementById(headPos).style.backgroundColor=snakeColor
+    var headPos = coordS(snakeH[0], snakeH[1]) // Sets the next head coord as red
+    document.getElementById(coordS(snakeH[0], snakeH[1])).style.backgroundColor = snakeColor;
+    document.getElementById(headPos).classList.add('snake');
+    document.getElementById(headPos).classList.remove('pixel');
+    document.getElementById(headPos).classList.remove('food');
 
      
     if (!(snakeH[0] == food[0] && snakeH[1] == food[1])){ // Not Hit food
         var tailPosA = snakeB.pop() // Remove from array
-        var tailPos = addZero(tailPosA[0]) + addZero(tailPosA[1])
-        document.getElementById(tailPos).style.backgroundColor="gray"
+        snakeS.pop()
+
+        var tailPos = coordS(tailPosA[0], tailPosA[1])
+        document.getElementById(tailPos).classList.add('pixel');
+        document.getElementById(tailPos).classList.remove('snake');
+        document.getElementById(tailPos).style.backgroundColor = "gray";
     }
     else { // Hit food
         makeFood();
+        if (!original)
+            MegaMode();
     }
 
     pressed = false; // Hold second key press
@@ -149,8 +207,11 @@ function Death(){
         dead = true;
     }
 
-    if (dead)
+    if (dead){
         clearInterval(stopInterval)
+        clearInterval(strobeInterval)
+    }
+
     else
         update();
 }
@@ -187,3 +248,38 @@ addEventListener("keydown", function(event){
         }
     }
 }, false);
+
+effect = "None"
+function MegaMode() {
+    if (score % 5 == 4 || score == 0) {
+        var rand = Math.random();
+        
+        if (strobeInterval != null){
+            clearInterval(strobeInterval);
+            strobeInterval = null
+        }
+
+
+        if (rand < 1){
+            strobeInterval = setInterval(Strobe, 125)
+            effect = "Strobe"
+        }
+    }
+}
+
+var strobeInterval;
+var r = 0
+var g = 0
+var b = 0
+function Strobe(){
+    r += 10
+    g += 20
+    b += 30
+    r = r % 255
+    g = g % 255
+    b = b % 255
+    var list = document.getElementsByClassName('pixel')
+    for (var i = 0; i < list.length; i++){
+        list[i].style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")"
+    }
+}

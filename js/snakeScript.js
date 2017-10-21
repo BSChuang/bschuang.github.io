@@ -259,6 +259,11 @@ addEventListener("keydown", function(event){
 function ClearMega() {
     if (strobeInterval != null){
         clearInterval(strobeInterval);
+        var pixels = document.getElementsByClassName("pixel");
+        console.log(pixels)
+        for (var i = 0; i < pixels.length; i++){
+            pixels[i].style.backgroundColor = "gray"
+        }
         strobeInterval = null
     }
     if (minesS.length > 0){
@@ -266,16 +271,19 @@ function ClearMega() {
             document.getElementById(minesS[i]).style.backgroundColor = "gray";
         minesS = [];
     }
+
+    effect = "None"
 }
 
 effect = "None"
 function MegaMode() {
-    if (score % 5 == 4 || score == 0) { // Every 5
+    if (score % 5 == 3)
         ClearMega()
+    if (score % 5 == 4 || score == 0) { // Every 5
 
         var rand = Math.random();
-        if (rand < 0){
-            strobeInterval = setInterval(Strobe, 125)
+        if (rand < 0.5){
+            strobeInterval = setInterval(Strobe, 250)
             effect = "Strobe"
         }
         else if (rand < 1){
@@ -304,7 +312,7 @@ function Strobe(){
 
 var minesS = []
 function MineField() {
-    var mines = Math.floor(widthPixels * lengthPixels / 30);
+    var mines = Math.floor(widthPixels * lengthPixels / 50);
     for (var i = 0; i < mines; i++){
         var x = Math.floor(Math.random() * lengthPixels)
         var y = Math.floor(Math.random() * widthPixels)

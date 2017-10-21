@@ -18,8 +18,11 @@ function SwitchMode() {
     else{
         document.getElementById("mode").innerHTML = "Mode: Original"
         original = true;
-    }
 
+        if (strobeInterval != null)
+            clearInterval(strobeInterval);
+    }
+    makeSnake()
 }
 
 function makeOutline() {
@@ -78,7 +81,8 @@ function CheckSnakeColor(){
 function makeSnake() {
     makeOutline();
     CheckSnakeColor();
-    
+    ClearMega();
+
     dead = false;
     nextPress = "";
     dir = "d"
@@ -207,6 +211,9 @@ function Death(){
         dead = true;
     }
 
+    if (minesS.includes(headPosS))
+        dead = true;
+
     if (dead){
         clearInterval(stopInterval)
         clearInterval(strobeInterval)
@@ -249,20 +256,31 @@ addEventListener("keydown", function(event){
     }
 }, false);
 
+function ClearMega() {
+    if (strobeInterval != null){
+        clearInterval(strobeInterval);
+        strobeInterval = null
+    }
+    if (minesS.length > 0){
+        for (var i = 0; i < minesS.length; i++)
+            document.getElementById(minesS[i]).style.backgroundColor = "gray";
+        minesS = [];
+    }
+}
+
 effect = "None"
 function MegaMode() {
-    if (score % 5 == 4 || score == 0) {
+    if (score % 5 == 4 || score == 0) { // Every 5
+        ClearMega()
+
         var rand = Math.random();
-        
-        if (strobeInterval != null){
-            clearInterval(strobeInterval);
-            strobeInterval = null
-        }
-
-
-        if (rand < 1){
+        if (rand < 0){
             strobeInterval = setInterval(Strobe, 125)
             effect = "Strobe"
+        }
+        else if (rand < 1){
+            MineField();
+            effect = "Mine Field"
         }
     }
 }
@@ -282,4 +300,16 @@ function Strobe(){
     for (var i = 0; i < list.length; i++){
         list[i].style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")"
     }
+}
+
+var minesS = []
+function MineField() {
+    var mines = Math.floor(widthPixels * lengthPixels / 30);
+    for (var i = 0; i < mines; i++){
+        var x = Math.floor(Math.random() * lengthPixels)
+        var y = Math.floor(Math.random() * widthPixels)
+        minesS.unshift(coordS(x, y))
+        document.getElementById(coordS(x, y)).style.backgroundColor = "black";
+    }
+    console.log(minesS);
 }

@@ -2,7 +2,7 @@ var widthPixels = 0;
 var lengthPixels = 0;
 var stopInterval = 0;
 var score = 0;
-var original = true;
+var original = false;
 var snakeColor = "#7f0c0c";
 
 var snakeSize = 4;

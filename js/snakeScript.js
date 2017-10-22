@@ -126,7 +126,7 @@ function makeSnake() {
 
     stopInterval = setInterval(Death, 75);
 }
-
+var foodS;
 function makeFood (){
     food = [Math.floor(Math.random() * lengthPixels), Math.floor(Math.random() * widthPixels)]
 
@@ -143,7 +143,7 @@ function makeFood (){
             }
         }
     }
-    foodS = addZero(food[0]) + addZero(food[1])
+    foodS = coordS(food[0], food[1])
     document.getElementById(foodS).classList.add('food');
     document.getElementById(foodS).classList.remove('pixel');
     document.getElementById(foodS).style.backgroundColor = "yellow";
@@ -190,6 +190,8 @@ function update(){
             MegaMode();
     }
 
+    if (document.getElementById(coordS(food[0], food[1])).style.backgroundColor != "yellow") // if food is wrong color, reset color
+        document.getElementById(coordS(food[0], food[1])).style.backgroundColor = "yellow"
     pressed = false; // Hold second key press
     if (nextPress != ""){
         dir = nextPress;
@@ -272,7 +274,7 @@ function ClearMega() {
     if (minesS.length > 0){
         for (var i = 0; i < minesS.length; i++)
             document.getElementById(minesS[i]).style.backgroundColor = "gray";
-        minesS = [];
+        minesS.length = 0;
     }
 
     if (speedUp){
@@ -287,32 +289,33 @@ function ClearMega() {
         for (var i = 0; i < permanenceList.length; i++) // turn perm to gray
             document.getElementById(permanenceList[i]).style.backgroundColor = "gray";
         permanenceTimer = 0;
-        permanenceList = []; //clear perm list
+        permanenceList.length = 0; //clear perm list
     }
 
     effect = "None"
 }
 
 effect = "None"
+numEffects = 4
 function MegaMode() {
     if (score % 5 == 3)
         ClearMega()
     if (score % 5 == 4 || score == 0) { // Every 5
 
         var rand = Math.random();
-        if (rand < 0){
+        if (rand < 1/numEffects){
             strobeInterval = setInterval(Strobe, 250)
             effect = "Strobe"
         }
-        else if (rand < .25){
+        else if (rand < 2/numEffects){
             MineField();
             effect = "Mine Field"
         }
-        else if (rand < .5){
+        else if (rand < 3/numEffects){
             SpeedUp();
             effect = "Speed Up"
         }
-        else if (rand < 1){
+        else if (rand < 4/numEffects){
             permanenceInterval = setInterval(Permanence, 75);
             effect = "Permanence"
         }
@@ -342,7 +345,9 @@ function MineField() {
     for (var i = 0; i < mines; i++){
         var x = Math.floor(Math.random() * lengthPixels)
         var y = Math.floor(Math.random() * widthPixels)
-        minesS.unshift(coordS(x, y))
+        if (coordS(x, y) != foodS)
+            minesS.unshift(coordS(x, y))
+
         document.getElementById(coordS(x, y)).style.backgroundColor = "black";
     }
     console.log(minesS);
@@ -363,7 +368,8 @@ function Permanence() {
         for (var i = 0; i < permanenceList.length; i++) // turn perm to gray
             document.getElementById(permanenceList[i]).style.backgroundColor = "gray";
 
-        permanenceList = []; //clear perm list
+        permanenceList.length = 0; //clear perm list
+        console.log(permanenceList)
         for (var i = 1; i < snakeS.length; i++) //re add perm list
             permanenceList.unshift(snakeS[i])
 

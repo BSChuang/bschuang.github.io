@@ -126,9 +126,11 @@ function makeSnake() {
 
     stopInterval = setInterval(Death, 75);
 }
+
 var foodS;
 function makeFood (){
     food = [Math.floor(Math.random() * lengthPixels), Math.floor(Math.random() * widthPixels)]
+    foodS = coordS(food[0], food[1])
 
     if (food[0] == snakeH[0] && food[1] == snakeH[1]){
         makeFood();
@@ -143,7 +145,14 @@ function makeFood (){
             }
         }
     }
-    foodS = coordS(food[0], food[1])
+
+    if (minesS.length != 0)
+        if (document.getElementById(foodS).style.backgroundColor == "black"){
+            makeFood();
+            return;
+        }
+
+
     document.getElementById(foodS).classList.add('food');
     document.getElementById(foodS).classList.remove('pixel');
     document.getElementById(foodS).style.backgroundColor = "yellow";

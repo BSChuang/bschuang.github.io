@@ -77,3 +77,15 @@ body {
   height: 20px;
   min-height: 20px;
 }
+
+#lose{ 
+  position: absolute;
+  top: 50%;
+  left:45%;
+  background-color:clear;
+  font-family: 'novecentosanswide';
+  color: black;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 50px;
+  }

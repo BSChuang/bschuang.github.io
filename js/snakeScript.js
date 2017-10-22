@@ -5,7 +5,6 @@ var score = 0;
 var original = false;
 var snakeColor = "#7f0c0c";
 
-var snakeSize = 4;
 var dead = false;
 var dir = "d";
 var food = [];
@@ -199,7 +198,7 @@ function update(){
 }
 
 function Death(){
-    var headPosS = addZero(snakeH[0]) + addZero(snakeH[1])
+    var headPosS = coordS(snakeH[0], snakeH[1])
     for (var i = 0; i < snakeB.length; i++){
         var posS = addZero(snakeB[i][0]) + addZero(snakeB[i][1])
         if (posS == headPosS){
@@ -215,12 +214,16 @@ function Death(){
         dead = true;
 
     if (dead){
+        document.getElementById("lose").innerHTML = "Game Over"
         clearInterval(stopInterval)
         clearInterval(strobeInterval)
     }
 
-    else
+    else{
+        document.getElementById("lose").innerHTML = ""
         update();
+    }
+
 }
 
 var pressed = false;
@@ -272,6 +275,21 @@ function ClearMega() {
         minesS = [];
     }
 
+    if (speedUp){
+        clearInterval(stopInterval)
+        stopInterval = setInterval(Death, 75);
+        speedUp = false
+    }
+
+    if (permanenceInterval != null){
+        clearInterval(permanenceInterval)
+
+        for (var i = 0; i < permanenceList.length; i++) // turn perm to gray
+            document.getElementById(permanenceList[i]).style.backgroundColor = "gray";
+        permanenceTimer = 0;
+        permanenceList = []; //clear perm list
+    }
+
     effect = "None"
 }
 
@@ -282,13 +300,21 @@ function MegaMode() {
     if (score % 5 == 4 || score == 0) { // Every 5
 
         var rand = Math.random();
-        if (rand < 0.5){
+        if (rand < 0){
             strobeInterval = setInterval(Strobe, 250)
             effect = "Strobe"
         }
-        else if (rand < 1){
+        else if (rand < 0){
             MineField();
             effect = "Mine Field"
+        }
+        else if (rand < 0){
+            SpeedUp();
+            effect = "Speed Up"
+        }
+        else if (rand < 1){
+            permanenceInterval = setInterval(Permanence, 75);
+            effect = "Permanence"
         }
     }
 }
@@ -320,4 +346,36 @@ function MineField() {
         document.getElementById(coordS(x, y)).style.backgroundColor = "black";
     }
     console.log(minesS);
+}
+
+speedUp = false;
+function SpeedUp() {
+    speedUp = true;
+    clearInterval(stopInterval)
+    stopInterval = setInterval(Death, 50);
+}
+
+var permanenceInterval;
+var permanenceTimer = 0;
+var permanenceList = [];
+function Permanence() {
+    if (permanenceTimer <= 0){
+        for (var i = 0; i < permanenceList.length; i++) // turn perm to gray
+            document.getElementById(permanenceList[i]).style.backgroundColor = "gray";
+
+        permanenceList = []; //clear perm list
+        for (var i = 1; i < snakeS.length; i++) //re add perm list
+            permanenceList.unshift(snakeS[i])
+
+        permanenceTimer = 10 //reset perm timer
+    }
+
+    for (var i = 0; i < permanenceList.length; i++) // Set perm color
+        document.getElementById(permanenceList[i]).style.backgroundColor = snakeColor;
+
+    if (permanenceList.includes(coordS(snakeH[0], snakeH[1])))  // If snake touches any on perm list
+        dead = true;
+
+    permanenceTimer -= 0.075;
+    effect = "Permenance: (" + Math.round(permanenceTimer * 10)/10 + ")"
 }

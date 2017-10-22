@@ -304,11 +304,11 @@ function MegaMode() {
             strobeInterval = setInterval(Strobe, 250)
             effect = "Strobe"
         }
-        else if (rand < 0){
+        else if (rand < .25){
             MineField();
             effect = "Mine Field"
         }
-        else if (rand < 0){
+        else if (rand < .5){
             SpeedUp();
             effect = "Speed Up"
         }

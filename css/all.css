@@ -327,11 +327,13 @@ h2.slogan{
 	font-size: 18px;
 	padding: 0 0 0 20px;
 }
-.progress li span.csharp{width: 60%;}
+.progress li span.csharp{width: 55%;}
 .progress li span.python{width: 75%;}
-.progress li span.html{width: 55%;}
+.progress li span.html{width: 50%;}
 .progress li span.css{width: 45%;}
 .progress li span.javascript{width: 70%;}
+.progress li span.windows{width: 65%;}
+.progress li span.linux{width: 55%;}
 .progress li span.jquery{width: 10%;}
 
 .progress li span.archery{width: 80%;}

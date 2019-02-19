@@ -65,16 +65,22 @@ function coordS(x, y){
 function CheckSnakeColor(){
     var hexLetters = ['a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F']
     var color = document.getElementById("inputColor").value; 
-    if (color.length == 7 && color[0] == "#"){
         var error = false;
         for (var i = 1; i < color.length; i++){
-            if (isNaN(color[i]))
-                if (!hexLetters.includes(color[i]))
-                    error = true;
+            if (isNaN(color[i]) && !hexLetters.includes(color[i])) {
+                error = true;
+            }
+
         }
-        if (!error)
-            snakeColor = color
-    }
+        if (error) {
+            var hex = (Math.random()*0xFFFFFF<<0).toString(16);
+            for (var j = 0; j < 6 - hex.length; j++) {
+                hex = "0" + hex;
+            }
+            snakeColor = "#" + hex;
+        } else {
+            snakeColor = "#" + color
+        }
 }
 
 function makeSnake() {

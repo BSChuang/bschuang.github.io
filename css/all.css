@@ -327,20 +327,19 @@ h2.slogan{
 	font-size: 18px;
 	padding: 0 0 0 20px;
 }
-.progress li span.csharp{width: 55%;}
-.progress li span.python{width: 75%;}
+.progress li span img{
+    padding-top: 6.5px;
+    width: 30px;
+    height: 30px;
+}
+.progress li span.java{width: 100%;}
+.progress li span.python{width: 80%;}
+.progress li span.js{width: 70%;}
 .progress li span.html{width: 50%;}
-.progress li span.css{width: 45%;}
-.progress li span.javascript{width: 70%;}
-.progress li span.windows{width: 65%;}
-.progress li span.linux{width: 55%;}
-.progress li span.jquery{width: 10%;}
-
-.progress li span.archery{width: 80%;}
-.progress li span.climbing{width: 50%;}
-.progress li span.gymnastics{width: 15%;}
-.progress li span.snowboarding{width: 75%;}
-.progress li span.tennis{width: 60%;}
+.progress li span.dart{width: 40%;}
+.progress li span.csharp{width: 40%;}
+.progress li span.command{width: 60%;}
+.progress li span.assembly{width: 30%;}
 .plagin_list{
 	width: 100%;
 	overflow: hidden;
@@ -366,14 +365,14 @@ h2.slogan{
 	height: 100%;
 	position: relative;
 }
-.plagin_list li.li_1 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_2 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_3 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_4 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_5 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_6 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_7 a{background: no-repeat 50% 50% ;}
-.plagin_list li.li_8 a{background: no-repeat 50% 50% ;}
+.plagin_list li.windows a{background: url(https://img.icons8.com/color/72/000000/windows-10.png) no-repeat 50% 50% ;}
+.plagin_list li.android a{background: url(https://img.icons8.com/color/72/000000/android-os.png) no-repeat 50% 50% ;}
+.plagin_list li.firebase a{background: url(https://img.icons8.com/color/72/000000/firebase.png) no-repeat 50% 50% ;}
+.plagin_list li.github a{background: url(https://img.icons8.com/color/72/000000/github.png) no-repeat 50% 50% ;}
+.plagin_list li.arduino a{background: url(https://img.icons8.com/color/72/000000/arduino.png) no-repeat 50% 50% ;}
+.plagin_list li.linux a{background: url(https://img.icons8.com/color/72/000000/linux.png) no-repeat 50% 50% ;}
+.plagin_list li.raspi a{background: url(https://img.icons8.com/color/72/000000/raspberry-pi.png) no-repeat 50% 50% ;}
+.plagin_list li.unity a{background: url(https://img.icons8.com/ios/72/000000/unity-filled.png) no-repeat 50% 50% ;}
 .wrapper-holder.grey p{padding: 0 0 25px;}
 .plagin_list.none{display: none;}
 
@@ -540,17 +539,18 @@ transition: all 0.5s ease-in-out;
 .footer-content {
 	max-width: 1170px;
 	margin: 0 auto;
-	padding: 45px 0 20px;
+	padding: 50px 0 20px;
 	color: #a5a5a5;
 }
 .footer-content .social{
+    padding-left: 200px;
 	overflow:hidden;
-	margin: 0 auto 45px;
+	margin: 0 auto 30px;
 	width: 670px;
 }
 .footer-content .social li{
 	float:left;
-	margin: 0 0 0 10px;
+	margin: 0 0 0 25px;
 	border-radius: 50%;
 	behavior: url(css/PIE.htc);
 	text-indent: -9999px;
@@ -560,7 +560,7 @@ transition: all 0.5s ease-in-out;
 	position:relative;
 	display: table;
 }
-.footer-content .social li:first-child{margin: 0;}
+.footer-content .social li:first-child{}
 .footer-content .social li:hover{
 	background: #50af6f;
 	-webkit-transition: all 0.5s ease-in-out;
@@ -572,11 +572,9 @@ transition: all 0.5s ease-in-out;
 	display: table-cell;	
 	position: relative;
 }
-.footer-content .social li.email a{background: url(../images/icon_email.png) no-repeat 50% 50% ;}
-.footer-content .social li.facebook a{background: url(../images/icon_fb.png) no-repeat 50% 50%;}
-.footer-content .social li.spotify a{background: url(../images/spotify-300x300.png) no-repeat 50% 50%/85px 85px  ;}
-.footer-content .social li.twitter a{background: url(../images/icon_tw.png) no-repeat 50% 50% ;}
-.footer-content .social li.github a{background: url(../images/GitHub-Mark-Light-64px.png) no-repeat 50% 50%;}
+.footer-content .social li.email a{background: url(https://img.icons8.com/color/96/000000/gmail.png) no-repeat 50% 50%/70px 70px ;}
+.footer-content .social li.github a{background: url(https://img.icons8.com/color/96/000000/github.png) no-repeat 50% 50%/90px 90px ;}
+.footer-content .social li.linkedin a{background: url(https://img.icons8.com/color/96/000000/linkedin.png) no-repeat 50% 50%/80px 80px;}
 .footer-content p{
 	font:18px/20px Arial, Helvetica, sans-serif;
 	display: block;
@@ -678,7 +676,7 @@ transition: all 0.5s ease-in-out;
 		background-size:38px 38px;
 	}
 	.plagin_list li.li_1 a{
-		background-image: url(../images/extra/java.png);
+		background-image: url();
 		background-size:49px 42px;
 	}
 	.plagin_list li.li_2 a{

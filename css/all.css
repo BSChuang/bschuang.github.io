@@ -227,7 +227,7 @@ h2.slogan{
 	color: #fff;
 	margin: 0 0 81px;
 }
-#main p{
+#main p.about{
 	color: #bfc3c9;
 }
 .box_timeline_holder{
@@ -412,7 +412,7 @@ transition: all 0.5s ease-in-out;
 }
 /* begin add */
 .sub_nav li {
-	color: #a4a7ac;
+	color: #fff;
 	font-size: 14px;
 	line-height: 16px;
 	text-transform: uppercase;

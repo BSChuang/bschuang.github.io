@@ -214,9 +214,8 @@ h2.slogan{
 #main{
 	max-width: 1170px;
 	margin: 0 auto;
-	padding: 70px 0 76px;
+	padding: 70px 0 30px;
 	position:relative;
-	/*background: url(../images/icon_header.png) no-repeat 50% 0;*/
 }
 #main h2{
 	display: block;
@@ -227,6 +226,9 @@ h2.slogan{
 	line-height: 32px;
 	color: #fff;
 	margin: 0 0 81px;
+}
+#main p{
+	color: #bfc3c9;
 }
 .box_timeline_holder{
 	background: url(../images/bg_timeline_l.png) no-repeat 0 70px;

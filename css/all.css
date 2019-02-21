@@ -366,14 +366,14 @@ h2.slogan{
 	height: 100%;
 	position: relative;
 }
-.plagin_list li.li_1 a{background: url(../images/GitHub-Mark-Light-64px.png) no-repeat 50% 50% ;}
-.plagin_list li.li_2 a{background: url() no-repeat 50% 50% ;}
-.plagin_list li.li_3 a{background: url(../images/icon_ld.png) no-repeat 50% 50% ;}
-.plagin_list li.li_4 a{background: url(../images/icon_fl.png) no-repeat 50% 50% ;}
-.plagin_list li.li_5 a{background: url(../images/icon_html.png) no-repeat 50% 50% ;}
-.plagin_list li.li_6 a{background: url(../images/icon_wp.png) no-repeat 50% 50% ;}
-.plagin_list li.li_7 a{background: url(../images/icon_jq.png) no-repeat 50% 50% ;}
-.plagin_list li.li_8 a{background: url(../images/icon_seo.png) no-repeat 50% 50% ;}
+.plagin_list li.li_1 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_2 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_3 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_4 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_5 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_6 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_7 a{background: no-repeat 50% 50% ;}
+.plagin_list li.li_8 a{background: no-repeat 50% 50% ;}
 .wrapper-holder.grey p{padding: 0 0 25px;}
 .plagin_list.none{display: none;}
 
@@ -678,7 +678,7 @@ transition: all 0.5s ease-in-out;
 		background-size:38px 38px;
 	}
 	.plagin_list li.li_1 a{
-		background-image: url(../images/icon_ps@x2.png);
+		background-image: url(../images/extra/java.png);
 		background-size:49px 42px;
 	}
 	.plagin_list li.li_2 a{
